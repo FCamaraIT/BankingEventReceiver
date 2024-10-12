@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BankingApi.EventReceiver.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankingApi.EventReceiver
 {

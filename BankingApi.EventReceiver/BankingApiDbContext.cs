@@ -6,7 +6,16 @@ namespace BankingApi.EventReceiver
     {
         public DbSet<BankAccount> BankAccounts { get; set; }
 
+        public BankingApiDbContext(DbContextOptions<BankingApiDbContext> options) : base(options) {}
+
+        public BankingApiDbContext(DbContextOptions options) : base(options) {}
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=BankingApiTest;Integrated Security=True;TrustServerCertificate=True;");
+        {
+            if (!options.IsConfigured)
+            {
+                options.UseInMemoryDatabase("TestDb");
+            }
+        }
     }
 }
